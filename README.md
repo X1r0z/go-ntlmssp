@@ -1,7 +1,7 @@
 # go-ntlmssp
 Golang package that provides NTLM/Negotiate authentication over HTTP
 
-[![GoDoc](https://godoc.org/github.com/Azure/go-ntlmssp?status.svg)](https://godoc.org/github.com/Azure/go-ntlmssp) [![Build Status](https://travis-ci.org/Azure/go-ntlmssp.svg?branch=dev)](https://travis-ci.org/Azure/go-ntlmssp)
+[![GoDoc](https://godoc.org/github.com/X1r0z/go-ntlmssp?status.svg)](https://godoc.org/github.com/X1r0z/go-ntlmssp)
 
 Protocol details from https://msdn.microsoft.com/en-us/library/cc236621.aspx
 Implementation hints from http://davenport.sourceforge.net/ntlm.html
@@ -12,7 +12,7 @@ This package implements NTLMv2.
 
 # Usage
 
-```
+```golang
 url, user, password := "http://www.example.com/secrets", "robpike", "pw123"
 // url, user, password := "http://www.example.com/secrets", "robpike", "8ed4a48ecd2a1276eed963da80e2256e"
 
