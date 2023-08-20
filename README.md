@@ -1,4 +1,7 @@
 # go-ntlmssp
+
+Modified from [Azure/go-ntlmssp](https://github.com/Azure/go-ntlmssp), and added Pth Mode (Pass The Hash).
+
 Golang package that provides NTLM/Negotiate authentication over HTTP
 
 [![GoDoc](https://godoc.org/github.com/X1r0z/go-ntlmssp?status.svg)](https://godoc.org/github.com/X1r0z/go-ntlmssp)
