@@ -14,14 +14,17 @@ This package implements NTLMv2.
 
 ```
 url, user, password := "http://www.example.com/secrets", "robpike", "pw123"
+// url, user, password := "http://www.example.com/secrets", "robpike", "8ed4a48ecd2a1276eed963da80e2256e"
+
 client := &http.Client{
   Transport: ntlmssp.Negotiator{
-    RoundTripper:&http.Transport{},
+    RoundTripper: &http.Transport{},
+    UsePth: false, // or true when using Pth Mode (Pass The Hash)
   },
 }
 
 req, _ := http.NewRequest("GET", url, nil)
-req.SetBasicAuth(user, password)
+req.SetBasicAuth(user, password) // password should be NTLM Hash when using Pth Mode
 res, _ := client.Do(req)
 ```
 

@@ -10,12 +10,18 @@ package ntlmssp
 import (
 	"crypto/hmac"
 	"crypto/md5"
+	"encoding/hex"
 	"golang.org/x/crypto/md4"
 	"strings"
 )
 
-func getNtlmV2Hash(password, username, target string) []byte {
-	return hmacMd5(getNtlmHash(password), toUnicode(strings.ToUpper(username)+target))
+func getNtlmV2Hash(password, username, target string, usePth bool) []byte {
+	if usePth {
+		ntlmHash, _ := hex.DecodeString(password)
+		return hmacMd5(ntlmHash, toUnicode(strings.ToUpper(username)+target))
+	} else {
+		return hmacMd5(getNtlmHash(password), toUnicode(strings.ToUpper(username)+target))
+	}
 }
 
 func getNtlmHash(password string) []byte {
