@@ -15,8 +15,8 @@ import (
 	"strings"
 )
 
-func getNtlmV2Hash(password, username, target string, usePth bool) []byte {
-	if usePth {
+func getNtlmV2Hash(password, username, target string, pth bool) []byte {
+	if pth {
 		ntlmHash, _ := hex.DecodeString(password)
 		return hmacMd5(ntlmHash, toUnicode(strings.ToUpper(username)+target))
 	} else {

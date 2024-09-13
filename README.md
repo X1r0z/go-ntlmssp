@@ -22,7 +22,7 @@ url, user, password := "http://www.example.com/secrets", "robpike", "pw123"
 client := &http.Client{
   Transport: ntlmssp.Negotiator{
     RoundTripper: &http.Transport{},
-    UsePth: false, // or true when using Pth Mode (Pass The Hash)
+    Pth: false, // or true when using Pth Mode (Pass The Hash)
   },
 }
 

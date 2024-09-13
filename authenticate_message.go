@@ -82,7 +82,7 @@ func (m authenicateMessage) MarshalBinary() ([]byte, error) {
 
 // ProcessChallenge crafts an AUTHENTICATE message in response to the CHALLENGE message
 // that was received from the server
-func ProcessChallenge(challengeMessageData []byte, user, password string, domainNeeded bool, usePth bool) ([]byte, error) {
+func ProcessChallenge(challengeMessageData []byte, user, password string, domainNeeded bool, pth bool) ([]byte, error) {
 	if user == "" && password == "" {
 		return nil, errors.New("Anonymous authentication not supported")
 	}
@@ -120,7 +120,7 @@ func ProcessChallenge(challengeMessageData []byte, user, password string, domain
 	clientChallenge := make([]byte, 8)
 	rand.Reader.Read(clientChallenge)
 
-	ntlmV2Hash := getNtlmV2Hash(password, user, cm.TargetName, usePth)
+	ntlmV2Hash := getNtlmV2Hash(password, user, cm.TargetName, pth)
 
 	am.NtChallengeResponse = computeNtlmV2Response(ntlmV2Hash,
 		cm.ServerChallenge[:], clientChallenge, timestamp, cm.TargetInfoRaw)
